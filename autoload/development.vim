@@ -2,7 +2,7 @@
 " FILE        : autoload/development.vim
 " DESCRIPTION : Helper functions for plugin/development.vim
 " AUTHOR      : @diacus (diacus.magnuz@gmail.com)
-" LAST CHANGE : Thu Jul 27 09:34:30 PM CST 2023
+" LAST CHANGE : Thu Jul 27 10:34:06 PM CST 2023
 " CREATION    : Thu Jun  7 11:15:14 CDT 2018
 " ===========================================================================
 
@@ -38,16 +38,14 @@ function! development#setup()
     return
   endif
 
-  let code_width = exists('b:code_width')? b:code_width : 80
   let code_indent = exists('b:code_indent')? b:code_indent : 2
-  let code_margin = &textwidth + 1
 
   " Format
   for option in ['tabstop', 'shiftwidth', 'softtabstop']
     execute 'setlocal ' . option . '=' . code_indent
   endfor
 
-  execute 'match ErrorMsg /\%>'. code_margin .'v.\+/'
+  call development#margin_on()
 
   setlocal formatoptions=croqj
   setlocal expandtab " No tabs in your source code :)
@@ -89,5 +87,27 @@ function! development#make_tags()
   if exists('b:did_development_setup')
     execute 'silent !ctags -R --exclude=env --exclude=.venv --exclude=node_modules . &'
     redraw!
+  endif
+endfunction
+
+function! development#margin_on()
+  let txt_width = &textwidth > 0 ? &textwidth + 1 : 80
+  execute 'match ErrorMsg /\%>'. txt_width . 'v.\+/'
+  let b:margin = 1
+endfunction
+
+function! development#margin_off()
+  let txt_width = &textwidth > 0 ? &textwidth + 1 : 80
+  execute 'match Normal /\%>'. txt_width . 'v.\+/'
+  if exists('b:margin')
+    unlet b:margin
+  endif
+endfunction
+
+function! development#margin_toggle()
+  if exists('b:margin')
+    call development#margin_off()
+  else
+    call development#margin_on()
   endif
 endfunction
