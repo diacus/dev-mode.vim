@@ -12,6 +12,7 @@ autocmd! BufWrite * call development#update_tags()
 command! -nargs=0 InsertDate call development#date()
 command! -nargs=0 CreateTags call development#make_tags()
 
-nnoremap <leader>tx :call development#toogle_cursor_cross()<CR>
+nnoremap <leader>tl :call development#cursor_line_toggle()<CR>
+nnoremap <leader>tx :call development#cursor_cross_toggle()<CR>
 nnoremap <leader>tn :call development#toogle_number()<CR>
 nnoremap <leader>tm :call development#margin_toggle()<CR>

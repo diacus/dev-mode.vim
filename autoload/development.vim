@@ -37,6 +37,7 @@ function! development#setup()
   if exists('b:did_development_setup') || index(g:code_filetypes, &ft) == -1
     return
   endif
+  set cursorline
 
   let code_indent = exists('b:code_indent')? b:code_indent : 2
 
@@ -64,10 +65,23 @@ function! development#toogle_number()
   set number!
 endfunction
 
-function! development#toogle_cursor_cross()
-  let &cursorcolumn = &cursorline
-  set cursorcolumn!
-  set cursorline!
+function! development#cursor_line_toggle()
+  if &cursorcolumn
+    set nocursorcolumn
+    set cursorline
+  else
+    set cursorline!
+  endif
+endfunction
+
+function! development#cursor_cross_toggle()
+  if &cursorcolumn != &cursorline
+    set cursorcolumn
+    set cursorline
+  else
+    set cursorcolumn!
+    set cursorline!
+  endif
 endfunction
 
 function! development#date()
