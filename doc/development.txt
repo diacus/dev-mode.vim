@@ -1,0 +1,35 @@
+INTRODUCTION                                                   *development.vim*
+                                                        _                   ~
+                                                 __   _(_)_ __ ___          ~
+                                                 \ \ / / | '_ ` _ \ _____   ~
+                                                  \ V /| | | | | | |_____|  ~
+                                                   \_/ |_|_| |_| |_|        ~
+                                                                            ~
+                  _                _                                  _     ~
+               __| | _____   _____| | ___  _ __  _ __ ___   ___ _ __ | |_   ~
+              / _` |/ _ \ \ / / _ \ |/ _ \| '_ \| '_ ` _ \ / _ \ '_ \| __|  ~
+             | (_| |  __/\ V /  __/ | (_) | |_) | | | | | |  __/ | | | |_   ~
+              \__,_|\___| \_/ \___|_|\___/| .__/|_| |_| |_|\___|_| |_|\__|  ~
+                                          |_|                               ~
+                      Development settings for Vim editor
+                                   by @diacus
+
+==============================================================================
+CONTENTS                                                  *development-contents*
+
+Contents ................................................ |development-contents|
+  Normal Mappings ................................. |development-normal-mapings|
+  Commands .............................................. |development-commands|
+==============================================================================
+
+NORMAL MAPPINGS                                    *development-normal-mappings*
+<Leader>tn     Toogles the line numbering
+<Leader>tl     Toogles cursorline
+<Leader>tx     Toogles and synchronize both cursorline and cursor column
+<Leader>tm     Toggles margin error highlighting
+
+COMMANDS                                                  *development-commands*
+:InsertDate    Inserts Today's date and time in the current buffer
+:CreateTags    Create exuberant CTags file
+
+ vim:tw=78:et:ft=help:norl:
